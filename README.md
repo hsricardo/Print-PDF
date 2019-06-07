@@ -63,7 +63,6 @@ Function executed after submitting the form. Reads the form data and inserts in 
 ``` javascript
 $("#id.class").click(function () {
 	var content = "<p>...</p>";
-
 	printPDF(content);
 });
 ```
