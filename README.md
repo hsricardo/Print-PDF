@@ -72,8 +72,8 @@ $("#id.class").click(function () {
 
 HTML form:
 
-![HTML Screenshot (1)]( assets/screenshot(1).png)
+![HTML Screenshot (1)](assets/screenshots(1).png)
 
 New page and print:
 
-![HTML Screenshot (2)]( assets/screenshot(2).png)
+![HTML Screenshot (2)](assets/screenshots(2).png)
