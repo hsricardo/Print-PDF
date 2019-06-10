@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf8">
+	<title>PDF usando jquery</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+	body {
+		padding: 20px;
+	}
+
+	button {
+		background-color: #4997cc;
+		color: #ffffff;
+		border: none;
+		padding: 10px;
+		width:100%;
+	}
+</style>
+
+<body style="padding: 20px">
+	<button data-toggle="collapse" data-target="#divOrientacao">Formulário do Termo de Compromisso de Orientação</button>
+	<div id="divOrientacao" class="collapse">
+		<p>*todos os campos são obrigatórios.</p>
+		<form class="orientacao" name="formOrientacao" method="POST">
+			Nome do residente: <br>
+			<input type="text" class="orientacao" name="residente" id="residente" required> <br>
+			Titulação e nome do orientador: <br>
+			<select class="orientacao" name="titulacao" id="titulacao" required>
+				<option value="Dr.">Doutor</option>
+				<option value="Dra.">Doutora</option>
+				<option value="Me.">Mestre</option>
+				<option value="Ma.">Mestra</option>
+			</select>
+			<input type="text" class="orientacao" name="orientador" id="orientador" required> <br>
+			Tema do trabalho: <br>
+			<input type="text" class="orientacao" name="tema" id="tema" required> <br>
+			Área de residência: <br>
+			<select class="orientacao" name="area" id="area" required>
+				<option value="Saúde do Idoso">Saúde do Idoso</option>
+				<option value="Intensivismo">Intensivismo</option>
+				<option value="Neonatologia">Neonatologia</option>
+				<option value="Urgência e Emergência">Urgência e Emergência</option>
+				<option value="Reabilitação">Reabilitação</option>
+				<option value="Obstétrica">Obstétrica</option>
+				<option value="Bucomaxilo">Bucomaxilo</option>
+			</select> <br>
+			Eixo específico: <br>
+			<select class="orientacao" name="especifico" id="especifico" required>
+				<option value="Fisioterapia">Fisioterapia</option>
+				<option value="Serviço Social">Serviço Social</option>
+				<option value="Enfermagem">Enfermagem</option>
+				<option value="Odontologia">Odontologia</option>
+				<option value="Farmácia">Farmácia</option>
+				<option value="Análises Clínicas">Análises Clínicas</option>
+				<option value="Educação Física">Educação Física</option>
+				<option value="Fonoaudiologia">Fonoaudiologia</option>
+			</select> <br><br>
+			<input type="reset" value="Limpar">
+			<input type="submit" class="orientacao" id="submit" value="Gerar PDF"> <br>
+		</form>
+	</div>
+
+	<button data-toggle="collapse" data-target="#divDivulgacao">Formulário de Autorização de Divulgação</button>
+	<div id="divDivulgacao" class="collapse">
+		<p>*todos os campos são obrigatórios.</p>
+		<form class="divulgacao" name="formDivulgacao" method="POST">
+			Nome do residente: <br>
+			<input type="text" class="divulgacao" name="residente" id="residente" required> <br>
+			RG do residente: <br>
+			<input type="number" class="divulgacao" name="rg" id="rg" required> <br>
+			CPF do residente: <br>
+			<input type="number" class="divulgacao" name="cpf" id="cpf" required> <br>
+			Titulação e nome do orientador: <br>
+			<select class="divulgacao" name="titulacao" id="titulacao" required>
+				<option value="Dr.">Doutor</option>
+				<option value="Dra.">Doutora</option>
+				<option value="Me.">Mestre</option>
+				<option value="Ma.">Mestra</option>
+			</select>
+			<input type="text" class="divulgacao" name="orientador" id="orientador" required> <br>
+			Título da obra: <br>
+			<input type="text" class="divulgacao" name="obra" id="obra" required> <br>
+			Área de residência: <br>
+			<select class="divulgacao" name="area" id="area" required>
+				<option value="Saúde do Idoso">Saúde do Idoso</option>
+				<option value="Intensivismo">Intensivismo</option>
+				<option value="Neonatologia">Neonatologia</option>
+				<option value="Urgência e Emergência">Urgência e Emergência</option>
+				<option value="Reabilitação">Reabilitação</option>
+				<option value="Obstétrica">Obstétrica</option>
+				<option value="Bucomaxilo">Bucomaxilo</option>
+			</select> <br>
+			Eixo específico: <br>
+			<select class="divulgacao" name="especifico" id="especifico" required>
+				<option value="Fisioterapia">Fisioterapia</option>
+				<option value="Serviço Social">Serviço Social</option>
+				<option value="Enfermagem">Enfermagem</option>
+				<option value="Odontologia">Odontologia</option>
+				<option value="Farmácia">Farmácia</option>
+				<option value="Análises Clínicas">Análises Clínicas</option>
+				<option value="Educação Física">Educação Física</option>
+				<option value="Fonoaudiologia">Fonoaudiologia</option>
+			</select> <br><br><br>
+			<input type="reset" value="Limpar">
+			<input type="submit" class="divulgacao" id="submit" value="Gerar PDF">
+		</form>
+	</div>
+
+	<button data-toggle="collapse" data-target="#divDefesa">Formulário de Solicitação de Defesa</button>
+	<div id="divDefesa" class="collapse">
+		<p>*todos os campos são obrigatórios.</p>
+		<form class="defesa" name="formDefesa" method="POST">
+			Nome do residente: <br>
+			<input type="text" class="defesa" name="residente" id="residente" required> <br>
+			Tema do trabalho: <br>
+			<input type="text" class="defesa" name="tema" id="tema" required> <br>
+			Titulação e nome do orientador: <br>
+			<select class="defesa" name="titulacao" id="titulacao" required>
+				<option value="Prof. Dr.">Doutor</option>
+				<option value="Profa. Dra.">Doutora</option>
+				<option value="Prof. Me.">Mestre</option>
+				<option value="Profa Ma.">Mestra</option>
+			</select>
+			<input type="text" class="defesa" name="orientador" id="orientador" required> <br>
+			Titulação e nome do primeiro titular: <br>
+			<select class="defesa" name="titulacao1" id="titulacao1" required>
+				<option value="Prof. Dr.">Doutor</option>
+				<option value="Profa. Dra.">Doutora</option>
+				<option value="Prof. Me.">Mestre</option>
+				<option value="Profa Ma.">Mestra</option>
+			</select>
+			<input type="text" class="defesa" name="titular1" id="titular1" required> <br>
+			Instituição do primeiro titular: <br>
+			<input type="text" class="defesa" name="instituicao1" id="instituicao1" required> <br>
+			Titulação e nome do segundo titular: <br>
+			<select class="defesa" name="titulacao2" id="titulacao2" required>
+				<option value="Prof. Dr.">Doutor</option>
+				<option value="Profa. Dra.">Doutora</option>
+				<option value="Prof. Me.">Mestre</option>
+				<option value="Profa Ma.">Mestra</option>
+			</select>
+			<input type="text" class="defesa" name="titular2" id="titular2" required> <br>
+			Instituição do segundo titular: <br>
+			<input type="text" class="defesa" name="instituicao2" id="instituicao2" required> <br>
+			Titulação e nome do suplete: <br>
+			<select class="defesa" name="titulacao3" id="titulacao3" required>
+				<option value="Prof. Dr.">Doutor</option>
+				<option value="Profa. Dra.">Doutora</option>
+				<option value="Prof. Me.">Mestre</option>
+				<option value="Profa Ma.">Mestra</option>
+			</select>
+			<input type="text" class="defesa" name="suplente" id="suplente" required> <br>
+			Instituição do suplente: <br>
+			<input type="text" class="defesa" name="instituicao3" id="instituicao3" required> <br>
+			Data para a realização da defesa (dd/mm/aaaa): <br>
+			<input type="number" class="defesa" name="dia" id="dia" min="1" max="31" value="1" style="width:21px;"
+				required>
+			<select class="defesa" name="mes" id="mes" required>
+				<option value="janeiro">Janeiro</option>
+				<option value="fevereiro">Fevereiro</option>
+				<option value="março">Março</option>
+				<option value="abril">Abril</option>
+				<option value="maio">Maio</option>
+				<option value="junho">Junho</option>
+				<option value="julho">Julho</option>
+				<option value="agosto">Agosto</option>
+				<option value="setembro">Setembro</option>
+				<option value="outubro">Outubro</option>
+				<option value="novembro">Novembro</option>
+				<option value="dezembro">Dezembro</option>
+			</select>
+			<input type="number" class="defesa" name="ano" id="ano" min="2019" max="3000" value="2019"
+				style="width:38px;" required> <br>
+			Horário para a realização da defesa (hh:mm): <br>
+			<input type="number" class="defesa" name="hora" id="hora" min="00" max="23" value="12" style="width:21px;"
+				required>
+			<input type="number" class="defesa" name="minuto" id="minuto" min="00" max="59" value="00"
+				style="width:21px;" required> <br><br><br>
+			<input type="reset" value="Limpar">
+			<input type="submit" class="defesa" id="submit" value="Gerar PDF">
+		</form>
+	</div>
+
+	<button data-toggle="collapse" data-target="#divAutenticidade">Formulário do Termo de Autenticidade</button>
+	<div id="divAutenticidade" class="collapse">
+		<p>*todos os campos são obrigatórios.</p>
+		<form class="autenticidade" name="formAutenticidade" method="POST">
+			Nome do residente: <br>
+			<input type="text" class="autenticidade" name="residente" id="residente" required> <br>
+			RG do residente: <br>
+			<input type="number" class="autenticidade" name="rg" id="rg" required> <br>
+			CPF do residente: <br>
+			<input type="number" class="autenticidade" name="cpf" id="cpf" required> <br>
+			Título do trabalho: <br>
+			<input type="text" class="autenticidade" name="tema" id="tema" required> <br>
+			Área de residência: <br>
+			<select class="autenticidade" name="area" id="area" required>
+				<option value="Saúde do Idoso">Saúde do Idoso</option>
+				<option value="Intensivismo">Intensivismo</option>
+				<option value="Neonatologia">Neonatologia</option>
+				<option value="Urgência e Emergência">Urgência e Emergência</option>
+				<option value="Reabilitação">Reabilitação</option>
+				<option value="Obstétrica">Obstétrica</option>
+				<option value="Bucomaxilo">Bucomaxilo</option>
+			</select> <br>
+			Eixo específico: <br>
+			<select class="autenticidade" name="especifico" id="especifico" required>
+				<option value="Fisioterapia">Fisioterapia</option>
+				<option value="Serviço Social">Serviço Social</option>
+				<option value="Enfermagem">Enfermagem</option>
+				<option value="Odontologia">Odontologia</option>
+				<option value="Farmácia">Farmácia</option>
+				<option value="Análises Clínicas">Análises Clínicas</option>
+				<option value="Educação Física">Educação Física</option>
+				<option value="Fonoaudiologia">Fonoaudiologia</option>
+			</select> <br><br><br>
+			<input type="reset" value="Limpar">
+			<input type="submit" class="autenticidade" id="submit" value="Gerar PDF">
+		</form>
+	</div>
+
+	<button data-toggle="collapse" data-target="#divRealizacao">Formulário do Termo de Compromisso para Realização do TCR</button>
+	<div id="divRealizacao" class="collapse">
+		<p>*todos os campos são obrigatórios.</p>
+		<form class="realizacao" name="formRealizacao" method="POST">
+			Nome do residente: <br>
+			<input type="text" class="realizacao" name="residente" id="residente" required> <br>
+			Área de residência: <br>
+			<select class="realizacao" name="area" id="area" required>
+				<option value="Saúde do Idoso">Saúde do Idoso</option>
+				<option value="Intensivismo">Intensivismo</option>
+				<option value="Neonatologia">Neonatologia</option>
+				<option value="Urgência e Emergência">Urgência e Emergência</option>
+				<option value="Reabilitação">Reabilitação</option>
+				<option value="Obstétrica">Obstétrica</option>
+				<option value="Bucomaxilo">Bucomaxilo</option>
+			</select> <br>
+			Eixo específico: <br>
+			<select class="realizacao" name="especifico" id="especifico" required>
+				<option value="Fisioterapia">Fisioterapia</option>
+				<option value="Serviço Social">Serviço Social</option>
+				<option value="Enfermagem">Enfermagem</option>
+				<option value="Odontologia">Odontologia</option>
+				<option value="Farmácia">Farmácia</option>
+				<option value="Análises Clínicas">Análises Clínicas</option>
+				<option value="Educação Física">Educação Física</option>
+				<option value="Fonoaudiologia">Fonoaudiologia</option>
+			</select> <br>
+			Título do trabalho: <br>
+			<input type="text" class="realizacao" name="tema" id="tema" required> <br>
+			Titulação e nome do orientador: <br>
+			<select class="realizacao" name="titulacao" id="titulacao" required>
+				<option value="Dr.">Doutor</option>
+				<option value="Dra.">Doutora</option>
+				<option value="Me.">Mestre</option>
+				<option value="Ma.">Mestra</option>
+			</select>
+			<input type="text" class="realizacao" name="orientador" id="orientador" required> <br>
+			Titulação e nome do co-orientador (se houver):<br>
+			<select class="realizacao" name="titulacao1" id="titulacao1" required>
+				<option value="Dr.">Doutor</option>
+				<option value="Dra.">Doutora</option>
+				<option value="Me.">Mestre</option>
+				<option value="Ma.">Mestra</option>
+			</select>
+			<input type="text" class="realizacao" name="coorientador" id="coorientador"> <br><br><br>
+			<input type="reset" value="Limpar">
+			<input type="submit" class="realizacao" id="submit" value="Gerar PDF">
+		</form>
+	</div>
+
+</body>
+
+<script src="print.js"></script>
+
+</html>
